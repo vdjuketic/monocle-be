@@ -36,35 +36,14 @@ public class PostFacade {
 	}
 
 	public PostBasicViewWrapper getAllPosts() {
-		List<Post> posts = postService.getAllPosts();
-		List<PostBasicView> basicViewList = new ArrayList<>();
-
-		for (Post post: posts) {
-			basicViewList.add(PostBasicView.of(post));
-		}
-
-		return new PostBasicViewWrapper(basicViewList);
+		return PostBasicViewWrapper.of(postService.getAllPosts());
 	}
 
 	public PostBasicViewWrapper getPostByTags(Set<String> tags) {
-		List<Post> posts = postService.getPostsByTags(tags);
-		List<PostBasicView> basicViewList = new ArrayList<>();
-
-		for (Post post: posts) {
-			basicViewList.add(PostBasicView.of(post));
-		}
-
-		return new PostBasicViewWrapper(basicViewList);
+		return PostBasicViewWrapper.of(postService.getPostsByTags(tags));
 	}
 
 	public PostBasicViewWrapper getLatestPostsForUser(String id) {
-		List<Post> posts = postService.getLatestPostsForUser(id);
-		List<PostBasicView> basicViewList = new ArrayList<>();
-
-		for (Post post: posts) {
-			basicViewList.add(PostBasicView.of(post));
-		}
-
-		return new PostBasicViewWrapper(basicViewList);
+		return PostBasicViewWrapper.of(postService.getLatestPostsForUser(id));
 	}
 }
